@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.0
+ - update api_command_queue version to 0.2.0
+
 ## 0.1.0
 
 - Companion adapter package for `api_command_queue` Dart library
