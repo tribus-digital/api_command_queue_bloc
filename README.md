@@ -53,6 +53,29 @@ See [`example/main.dart`](example/main.dart) for a runnable example.
 
 For existing apps migrating from a previously hydrated queue class, keep `storagePrefix` aligned with the old queue runtime type or previous storage namespace so persisted queue state continues to restore correctly.
 
+## Undecodable Commands
+
+`SyncState.fromJson` decodes a queue in a single pass, so one command that cannot
+be restored throws and takes every other queued command with it. `hydrated_bloc`
+catches the error, falls back to an empty queue and — on its default
+`HydrationErrorBehavior.overwrite` — writes that empty queue back over the stored
+one. Every write the device had not yet sent is gone, with nothing to show for it
+but an `onError` call.
+
+`dropUndecodableCommands: true` decodes each command on its own first and leaves
+out only the ones that fail, reporting each through `apiCommandQueueLogger`:
+
+```dart
+HydratedApiCommandQueueCubit(
+  queue: queue,
+  dropUndecodableCommands: true,
+);
+```
+
+It defaults to off. Dropping a command is itself data loss, so the question is
+whether losing one unreadable command beats losing all of them — for an
+offline-first queue it usually does, but that is the consumer's call.
+
 ## Typical Setup
 
 The adapter package does not replace the core queue logic. A typical arrangement is:
