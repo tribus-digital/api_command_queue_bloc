@@ -59,6 +59,9 @@ class HydratedApiCommandQueueCubit<
   }
 
   @override
+  DateTime? get nextDueAt => queue.nextDueAt;
+
+  @override
   int get inFlightCount => queue.inFlightCount;
 
   @override

@@ -28,6 +28,9 @@ class ApiCommandQueueCubit<Payload, Request extends ApiCommandRequest<Payload>,
   SyncState<Payload, Request, Result, Command> get state => queue.state;
 
   @override
+  DateTime? get nextDueAt => queue.nextDueAt;
+
+  @override
   int get inFlightCount => queue.inFlightCount;
 
   @override
