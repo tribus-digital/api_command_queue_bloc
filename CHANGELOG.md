@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0
+
+- Requires `api_command_queue` 0.4.x, which adds
+  `ApiCommandOrchestrator.autoFlushWhenDue` so retries progress without
+  waiting for the consumer to trigger the next flush.
+
 ## 0.3.0
 
 - Requires `api_command_queue` 0.3.x, which schedules retry backoff instead of

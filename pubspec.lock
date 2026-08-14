@@ -21,10 +21,10 @@ packages:
     dependency: "direct main"
     description:
       name: api_command_queue
-      sha256: "78c3447630549fac7258367a47eb07941f200e9387e2f2b155fd4f34791e701d"
+      sha256: "4752d1b8ec238e5fabc3bfe0e82381726c4e7ae72a8f18a9a544f5a2f4e00fe4"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.0"
+    version: "0.4.0"
   args:
     dependency: transitive
     description:
